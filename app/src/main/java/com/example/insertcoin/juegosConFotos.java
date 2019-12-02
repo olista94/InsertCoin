@@ -1,10 +1,11 @@
 package com.example.insertcoin;
 
+import android.graphics.drawable.Drawable;
 
-public class juegos {
+public class juegosConFotos {
     long id;
     String titulo;
-    String portada;
+    Drawable portada;
     String descripcion;
     String genero;
     String plataforma;
@@ -14,7 +15,7 @@ public class juegos {
     String edadRecomendada;
     String enlace;
 
-    public juegos(long id, String titulo, String portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
+    public juegosConFotos(long id, String titulo, Drawable portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
         this.id = id;
         this.titulo = titulo;
         this.portada = portada;
@@ -32,6 +33,7 @@ public class juegos {
         return id;
 
     }
+
     public String getTitulo() {
         return titulo;
     }
@@ -40,11 +42,11 @@ public class juegos {
         this.titulo = titulo;
     }
 
-    public String getPortada() {
+    public Drawable getPortada() {
         return portada;
     }
 
-    public void setPortada(String portada) {
+    public void setPortada(Drawable portada) {
         this.portada = portada;
     }
 

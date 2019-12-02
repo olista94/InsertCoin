@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">InsertCoin</string>
+    <string name="login">Login</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="ver_comentarios">Ver comentarios</string>
+    <string name="a_adir_comentario">Añadir comentarios</string>
+    <string name="ver_perfil">Ver Perfil</string>
+    <string name="cerrar_sesion">Cerrar sesion</string>
 </resources>
