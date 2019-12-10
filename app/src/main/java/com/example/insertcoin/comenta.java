@@ -1,7 +1,7 @@
 package com.example.insertcoin;
 
 public class comenta {
-
+    long id;
     String login;
     String titulo;
     String comentario;
@@ -10,6 +10,21 @@ public class comenta {
         this.login = login;
         this.titulo = titulo;
         this.comentario = comentario;
+    }
+
+    public comenta(long id, String login, String titulo, String comentario) {
+        this.id = id;
+        this.login = login;
+        this.titulo = titulo;
+        this.comentario = comentario;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {

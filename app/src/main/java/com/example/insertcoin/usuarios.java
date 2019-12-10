@@ -15,6 +15,11 @@ public class usuarios {
         this.apellidos = apellidos;
     }
 
+    public usuarios(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public String getLogin() {
         return login;
     }

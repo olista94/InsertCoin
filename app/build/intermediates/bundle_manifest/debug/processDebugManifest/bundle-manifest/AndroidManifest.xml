@@ -8,7 +8,11 @@
         android:minSdkVersion="26"
         android:targetSdkVersion="29" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name="com.example.insertcoin.VariablesGlobales"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -18,7 +22,15 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.insertcoin.MainActivity" >
+        <activity android:name="com.example.insertcoin.Juegos_ADD" />
+        <activity android:name="com.example.insertcoin.Registro" />
+        <activity android:name="com.example.insertcoin.Comentarios_SHOWALL" />
+        <activity android:name="com.example.insertcoin.item_comentario" />
+        <activity android:name="com.example.insertcoin.activity_add_comentario" />
+        <activity android:name="com.example.insertcoin.Juegos_SHOWALL" />
+        <activity android:name="com.example.insertcoin.Juegos_SHOWCURRENT" />
+        <activity android:name="com.example.insertcoin.Usuarios_SHOWCURRENT" />
+        <activity android:name="com.example.insertcoin.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

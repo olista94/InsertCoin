@@ -6,5 +6,7 @@
         android:title="@string/ver_comentarios"></item>
     <item android:id="@+id/addComentario"
         android:title="@string/a_adir_comentario"></item>
+    <item android:id="@+id/addFoto"
+        android:title="Añadir foto"></item>
 
 </menu>

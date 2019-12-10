@@ -10,8 +10,8 @@
     <ImageView
         android:id="@+id/icono"
         android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="14dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/icono" />
 
@@ -42,6 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
+        android:onClick="onCreate"
         android:text="Entrar" />
 
     <Button
@@ -49,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:text="Registrarse" />
 

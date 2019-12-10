@@ -6,42 +6,75 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml
+8-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml
+9-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:5:5-19:19
-12        android:allowBackup="true"
-12-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.1.0] C:\Users\Casa\.gradle\caches\transforms-2\files-2.1\f01b27bb220ecb79298884ef36a7a2fb\core-1.1.0\AndroidManifest.xml:24:18-86
-14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:7:9-43
-16        android:label="@string/app_name"
-16-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:8:9-41
-17        android:roundIcon="@mipmap/ic_launcher_round"
-17-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:9:9-54
-18        android:supportsRtl="true"
-18-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:10:9-35
-19        android:testOnly="true"
-20        android:theme="@style/AppTheme" >
-20-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:11:9-40
-21        <activity android:name="com.example.insertcoin.MainActivity" >
-21-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:12:9-18:20
-21-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:12:19-47
-22            <intent-filter>
-22-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:13:13-17:29
-23                <action android:name="android.intent.action.MAIN" />
-23-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:14:17-69
-23-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:14:25-66
-24
-25                <category android:name="android.intent.category.LAUNCHER" />
-25-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:16:17-77
-25-->C:\Users\Casa\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:16:27-74
-26            </intent-filter>
-27        </activity>
-28    </application>
-29
-30</manifest>
+11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+11-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:5:5-81
+11-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:5:22-78
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:6:5-80
+12-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:6:22-77
+13
+14    <application
+14-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:8:5-31:19
+15        android:name="com.example.insertcoin.VariablesGlobales"
+15-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:9:9-42
+16        android:allowBackup="true"
+16-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:10:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.1.0] C:\Users\micro\.gradle\caches\transforms-2\files-2.1\f01b27bb220ecb79298884ef36a7a2fb\core-1.1.0\AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:11:9-43
+20        android:label="@string/app_name"
+20-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:12:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:13:9-54
+22        android:supportsRtl="true"
+22-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:14:9-35
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme" >
+24-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:15:9-40
+25        <activity android:name="com.example.insertcoin.Juegos_ADD" />
+25-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:16:9-57
+25-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:16:19-45
+26        <activity android:name="com.example.insertcoin.Registro" />
+26-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:17:9-46
+26-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:17:19-43
+27        <activity android:name="com.example.insertcoin.Comentarios_SHOWALL" />
+27-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:18:9-57
+27-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:18:19-54
+28        <activity android:name="com.example.insertcoin.item_comentario" />
+28-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:19:9-53
+28-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:19:19-50
+29        <activity android:name="com.example.insertcoin.activity_add_comentario" />
+29-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:20:9-61
+29-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:20:19-58
+30        <activity android:name="com.example.insertcoin.Juegos_SHOWALL" />
+30-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:21:9-52
+30-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:21:19-49
+31        <activity android:name="com.example.insertcoin.Juegos_SHOWCURRENT" />
+31-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:22:9-56
+31-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:22:19-53
+32        <activity android:name="com.example.insertcoin.Usuarios_SHOWCURRENT" />
+32-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:23:9-58
+32-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:23:19-55
+33        <activity android:name="com.example.insertcoin.LoginActivity" >
+33-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:24:9-30:20
+33-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:24:19-48
+34            <intent-filter>
+34-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:25:13-29:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:26:17-69
+35-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:26:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:28:17-77
+37-->C:\Users\micro\AndroidStudioProjects\InsertCoin\app\src\main\AndroidManifest.xml:28:27-74
+38            </intent-filter>
+39        </activity>
+40    </application>
+41
+42</manifest>

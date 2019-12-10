@@ -28,6 +28,10 @@ public class juegos {
         this.enlace = enlace;
     }
 
+    public juegos(String titulo) {
+        this.titulo = titulo;
+    }
+
     public long getId(){
         return id;
 

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+
+    /*----------------Login-----------------*/
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/sc_login"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
+
+    /*----------------Email-----------------*/
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="Email" />
+
+    <TextView
+        android:id="@+id/sc_email"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
+
+    /*----------------Nombre-----------------*/
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="Nombre" />
+
+    <TextView
+        android:id="@+id/sc_nombre"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
+
+    /*----------------Apellidos-----------------*/
+
+    <TextView
+        android:id="@+id/txtApellidos"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="Apellidos" />
+
+    <TextView
+        android:id="@+id/sc_apellidos"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
+
+    /*----------------Contraseña-----------------*/
+
+    <TextView
+        android:id="@+id/txtContraseña"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="Contraseña" />
+
+    <TextView
+        android:id="@+id/sc_contraseña"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
+
+</LinearLayout>

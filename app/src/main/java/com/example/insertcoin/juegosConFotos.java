@@ -29,6 +29,23 @@ public class juegosConFotos {
         this.enlace = enlace;
     }
 
+    public juegosConFotos(long id, String titulo, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.genero = genero;
+        this.plataforma = plataforma;
+        this.nacionalidad = nacionalidad;
+        this.compañia = compañia;
+        this.año = año;
+        this.edadRecomendada = edadRecomendada;
+        this.enlace = enlace;
+    }
+
+    public juegosConFotos(String titulo) {
+        this.titulo = titulo;
+    }
+
     public long getId(){
         return id;
 
