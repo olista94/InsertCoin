@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="115dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="120dp"
+        android:gravity="center"
+        android:text="Titulo:"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btBuscarTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edTitulo"
+        android:layout_width="217dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="120dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Titulo"
+        android:inputType="text"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btBuscarTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toEndOf="@+id/textTitulo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btBuscarTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:text="Buscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/verPerfil"
         android:title="@string/ver_perfil"></item>
     <item android:id="@+id/logout"
         android:title="@string/cerrar_sesion"></item>
+    <item android:id="@+id/buscarJuego"
+        android:title="buscar_juego"
+        android:icon="@drawable/ic_search_white_24dp"
+        app:showAsAction="ifRoom"></item>
 </menu>

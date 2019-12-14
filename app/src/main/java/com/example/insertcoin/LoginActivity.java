@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button btEntrar = findViewById(R.id.btEntrar);
-        bd = new GestorBD(getApplicationContext(),"insertcoin13",null,1);
+        bd = new GestorBD(getApplicationContext(),"insertcoin48",null,1);
         baseDatos = bd.getWritableDatabase();
 
         btEntrar.setOnClickListener( new View.OnClickListener(){
@@ -43,9 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
             else{
-                Toast.makeText(getApplicationContext(),"Usuario incorrecto", Toast.LENGTH_SHORT).show();
-                ((EditText) findViewById(R.id.login)).setText("");
-                ((EditText) findViewById(R.id.input_password)).setText("");
+                Toast.makeText(getApplicationContext(),VariablesGlobales.getMensajeBD(), Toast.LENGTH_LONG).show();
             }
         }});
 
@@ -54,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         btRegistarse.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bd = new GestorBD(getApplicationContext(),"insertcoin13",null,1);
+                bd = new GestorBD(getApplicationContext(),"insertcoin48",null,1);
                 baseDatos = bd.getWritableDatabase();
                 Intent i = new Intent(getApplicationContext(),Registro.class);
                 VariablesGlobales.setBaseDatos(bd);

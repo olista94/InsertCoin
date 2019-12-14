@@ -3,25 +3,29 @@
     package="com.example.insertcoin">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <application
-        android:name=".VariablesGlobales"
+        android:name=".core.VariablesGlobales"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Juegos_ADD"></activity>
-        <activity android:name=".Registro" />
-        <activity android:name=".Comentarios_SHOWALL" />
-        <activity android:name=".item_comentario" />
-        <activity android:name=".activity_add_comentario" />
-        <activity android:name=".Juegos_SHOWALL" />
-        <activity android:name=".Juegos_SHOWCURRENT" />
-        <activity android:name=".Usuarios_SHOWCURRENT" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".ui.Usuarios_EDIT"></activity>
+        <activity android:name=".ui.Juegos_SEARCH" />
+        <activity android:name=".ui.Juegos_EDIT" />
+        <activity android:name=".ui.Juegos_ADD" />
+        <activity android:name=".core.Registro" />
+        <activity android:name=".ui.Comentarios_SHOWALL" />
+        <activity android:name=".core.ItemComentario" />
+        <activity android:name=".ui.Comentarios_ADD" />
+        <activity android:name=".ui.Juegos_SHOWALL" />
+        <activity android:name=".ui.Juegos_SHOWCURRENT" />
+        <activity android:name=".ui.Usuarios_SHOWCURRENT" />
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

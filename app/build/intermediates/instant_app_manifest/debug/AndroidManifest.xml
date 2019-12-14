@@ -10,10 +10,12 @@
         android:targetSdkVersion="29" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
     <application
-        android:name="com.example.insertcoin.VariablesGlobales"
+        android:name="com.example.insertcoin.core.VariablesGlobales"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -21,16 +23,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.insertcoin.Juegos_ADD" />
-        <activity android:name="com.example.insertcoin.Registro" />
-        <activity android:name="com.example.insertcoin.Comentarios_SHOWALL" />
-        <activity android:name="com.example.insertcoin.item_comentario" />
-        <activity android:name="com.example.insertcoin.activity_add_comentario" />
-        <activity android:name="com.example.insertcoin.Juegos_SHOWALL" />
-        <activity android:name="com.example.insertcoin.Juegos_SHOWCURRENT" />
-        <activity android:name="com.example.insertcoin.Usuarios_SHOWCURRENT" />
-        <activity android:name="com.example.insertcoin.LoginActivity" >
+        <activity android:name="com.example.insertcoin.ui.Usuarios_EDIT" />
+        <activity android:name="com.example.insertcoin.ui.Juegos_SEARCH" />
+        <activity android:name="com.example.insertcoin.ui.Juegos_EDIT" />
+        <activity android:name="com.example.insertcoin.ui.Juegos_ADD" />
+        <activity android:name="com.example.insertcoin.core.Registro" />
+        <activity android:name="com.example.insertcoin.ui.Comentarios_SHOWALL" />
+        <activity android:name="com.example.insertcoin.core.ItemComentario" />
+        <activity android:name="com.example.insertcoin.ui.Comentarios_ADD" />
+        <activity android:name="com.example.insertcoin.ui.Juegos_SHOWALL" />
+        <activity android:name="com.example.insertcoin.ui.Juegos_SHOWCURRENT" />
+        <activity android:name="com.example.insertcoin.ui.Usuarios_SHOWCURRENT" />
+        <activity android:name="com.example.insertcoin.ui.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

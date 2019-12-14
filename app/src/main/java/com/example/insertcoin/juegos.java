@@ -12,9 +12,9 @@ public class juegos {
     String compañia;
     int año;
     String edadRecomendada;
-    String enlace;
 
-    public juegos(long id, String titulo, String portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
+
+    public juegos(long id, String titulo, String portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada) {
         this.id = id;
         this.titulo = titulo;
         this.portada = portada;
@@ -25,7 +25,6 @@ public class juegos {
         this.compañia = compañia;
         this.año = año;
         this.edadRecomendada = edadRecomendada;
-        this.enlace = enlace;
     }
 
     public juegos(String titulo) {
@@ -108,11 +107,4 @@ public class juegos {
         this.edadRecomendada = edadRecomendada;
     }
 
-    public String getEnlace() {
-        return enlace;
-    }
-
-    public void setEnlace(String enlace) {
-        this.enlace = enlace;
-    }
 }

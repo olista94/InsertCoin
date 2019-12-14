@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="56dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- Login Label -->
+            <TextView
+                android:id="@+id/ue_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Login"
+                android:inputType="text"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/negro"
+                android:textStyle="bold" />
+
+            <!-- Password Label -->
+            <EditText
+                android:id="@+id/ue_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+
+            <!-- Nombre Label -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/ue_nombre"
+                android:inputType="textPersonName"
+                android:hint="Nombre" />
+
+            <!-- Apellidps Label -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/ue_apellidos"
+                android:inputType="textPersonName"
+                android:hint="Apellidos" />
+
+            <!-- Email Label -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/ue_email"
+                android:inputType="textEmailAddress"
+                android:hint="Email" />
+
+
+            <Button
+                android:id="@+id/btn_ConfirmarEdit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="12dp"
+                android:text="Editar" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

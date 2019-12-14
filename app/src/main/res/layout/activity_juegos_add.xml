@@ -100,21 +100,14 @@
                 android:inputType="text" />
 
             <!-- Nacionalidad Label -->
-            <EditText
-                android:id="@+id/ja_enlace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="8dp"
-                android:hint="Enlace"
-                android:inputType="textWebEmailAddress" />
 
             <ImageView
                 android:id="@+id/imgPortada"
-                android:layout_width="150dp"
+                android:layout_width="223dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="70dp"
-                app:srcCompat="@drawable/icono" />
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/icono2" />
 
             <Button
                 android:id="@+id/btn_addPortada"
@@ -133,9 +126,6 @@
 
 
         </LinearLayout>>
-
-
-
     </ScrollView>>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.insertcoin;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -13,9 +14,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class Juegos_SHOWCURRENT extends AppCompatActivity {
     ImageView imgPortada = null;
@@ -27,13 +30,14 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
     TextView txtCompañia = null;
     TextView txtAnho = null;
     TextView txtEdadRecomendada = null;
-    TextView txtEnlace = null;
+    float puntuacion = 0;
 
     RatingBar barraValoracion = null;
     //TextView lblComentarios = null;
     //Button btnVolver = null;
     //Button btnCuadroDialogo = null;
     Cursor datos;
+    Cursor puntos;
     GestorBD bd;
     SQLiteDatabase baseDatos;
 
@@ -53,14 +57,18 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
             case R.id.verPerfil:
                 Intent i = new Intent(this,Usuarios_SHOWCURRENT.class);
                 startActivity(i);
-
+            break;
             case R.id.logout: //poner login a " " "hacer codigo";
+                VariablesGlobales.setTituloActual("");
+                VariablesGlobales.setUsuario("");
                 this.finish();
                 Intent intent = new Intent(this,LoginActivity.class);
                 startActivity(intent);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -68,25 +76,14 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juegos_showcurrent);
 
-        /*final TextView id = (TextView)findViewById(R.id.txtId);
-        final ImageView foto = (ImageView)findViewById(R.id.imgFoto);
-        EditText texto = (EditText) findViewById(R.id.txtTexto);
-        RatingBar valoracion = (RatingBar)findViewById(R.id.barraValoracion);
-        TextView lblcomentarios = (TextView)findViewById(R.id.lblComentarios); //SOBRE ESTE LABEL LANZAMOS MENÚ CONTEXTUAL***************
-        final Button btndialogo = (Button)findViewById(R.id.btnCuadroDialogo);//PARA LANZAR CUADRO DE DIÁLOGO*******************
-        Button volver = (Button) findViewById(R.id.btnVolver);*/
-
         Intent intent = getIntent();
-        /*String nombre = intent.getStringExtra("nombre");
-        String contenido = intent.getStringExtra("contenido");
-        String extra = intent.getStringExtra("extra1");*/
-        final juegos elemento = (juegos) intent.getSerializableExtra("elemento");
 
         bd = VariablesGlobales.getBaseDatos();
         //id.setText(String.valueOf(elemento.getId()));
         String juegoActual = VariablesGlobales.getTituloActual();
         baseDatos = bd.getWritableDatabase();
         datos = bd.juegosShowcurrent(baseDatos,juegoActual);
+        puntos = bd.obtenerPuntuacionJuego(baseDatos,juegoActual,VariablesGlobales.getUsuario());
 
         String titulo = datos.getString(datos.getColumnIndex("titulo"));
         String portada = datos.getString(datos.getColumnIndex("portada"));
@@ -97,10 +94,13 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
         String compania = datos.getString(datos.getColumnIndex("compania"));
         String anho = datos.getString(datos.getColumnIndex("anho"));
         String edad_recomendada = datos.getString(datos.getColumnIndex("edad_recomendada"));
-        String enlace = datos.getString(datos.getColumnIndex("enlace"));
 
-        System.out.println(portada+"*******************************************************");
-
+        if(!puntos.moveToFirst()){
+            puntuacion = 0;
+        }
+        else {
+            puntuacion = puntos.getFloat(puntos.getColumnIndex("puntuacion"));
+        }
 
         txtTitulo =  findViewById(R.id.txtTitulo);
         imgPortada = findViewById(R.id.imgPortada);
@@ -112,7 +112,7 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
         txtAnho = findViewById(R.id.txtAnho);
         txtEdadRecomendada = findViewById(R.id.txtEdadRecomendada);
         txtNacionalidad = findViewById(R.id.txtNacionalidad);
-        txtEnlace = findViewById(R.id.txtEnlace);
+
         barraValoracion = findViewById(R.id.barraValoracion);
 
 
@@ -125,97 +125,38 @@ public class Juegos_SHOWCURRENT extends AppCompatActivity {
         txtAnho.setText(anho);
         txtEdadRecomendada.setText(edad_recomendada);
         txtNacionalidad.setText(nacionalidad);
-        txtEnlace.setText(enlace);
-        System.out.println("Titulo*****************************************************************"+juegoActual);
-        String rutaFoto = "@drawable/"+portada;
-        System.out.println("------------------------------------------------"+rutaFoto);
-        int imageResource = getResources().getIdentifier(rutaFoto, null, getPackageName());
-        //Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
 
-        imgPortada.setImageResource(imageResource);
+        barraValoracion.setRating(puntuacion);
 
-        //Bitmap bitmap = BitmapFactory.decodeFile(rutaFoto);
-        //imgFoto.setImageBitmap(bitmap);
+        //String rutaFoto = "@drawable/"+portada;
 
-       /* for(juegos e : datos) {
-            String ruta = "@drawable/"+e.getPortada();
-            System.out.println(ruta+"*********************************");
-            int imageResource = getResources().getIdentifier(ruta, null, getPackageName());
-            Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-            //juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada(), e.getEnlace());
-            juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), imagen, e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada(), e.getEnlace());
-            datosConFoto.add(f);
+        Drawable imagen = null;
+        if(portada.contains("/storage")){
+            portada = portada;
+            imagen = Drawable.createFromPath(portada);
+            imgPortada.setImageDrawable(imagen);
+        }
+        else{
+            portada = "@drawable/"+portada;
+            int imageResource = getResources().getIdentifier(portada, null, getPackageName());
+            imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
+            imgPortada.setImageResource(imageResource);
+        }
 
-            foto.setImageDrawable(imagen);
-            texto.setText(elemento.getTitulo());
-        }*/
+        Button btn_valoracion = findViewById(R.id.btn_valoracion);
 
-
-
-        //Adaptador adaptador = new Adaptador(this, datosConFoto);
-        //volver.setAdapter(adaptador);
-/*
-        volver.setOnClickListener(new View.OnClickListener() {
+        btn_valoracion.setOnClickListener(new View.OnClickListener() {
             @Override
-            // Vuelve de la peli a la vista
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), Juegos_SHOWALL.class);
-                setResult(RESULT_OK, intent2);
-                finish();
+                puntuacion = barraValoracion.getRating();
+                bd.addPuntuacion(VariablesGlobales.getUsuario(),VariablesGlobales.getTituloActual(),puntuacion);
+                VariablesGlobales.setTituloActual("");
+                Toast.makeText(getApplicationContext(),VariablesGlobales.getMensajeBD(), Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getApplicationContext(), Juegos_SHOWALL.class);
+                startActivity(i);
             }
         });
 
-        //MENÚ CONTEXTUAL AL PULSAR EN EL LABEL COMENTARIOS**************************
-        registerForContextMenu(lblcomentarios);
-
-        //LANZAMOS CUADRO DE DIÁLOGO AL PULSAR UN BOTÓN*******************
-        btndialogo.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                AlertDialog.Builder dialogo = new AlertDialog.Builder(btndialogo.getContext());
-                dialogo.setMessage("¿Seguro que desea publicar el comentario?")
-                        .setTitle("Confirmar publicación de comentario")
-                        .setPositiveButton("Publicar", new DialogInterface.OnClickListener()  {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Log.i("Dialogos", "Publicación Aceptada.");
-                                aceptar();
-                            }
-                        });
-                dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.i("Dialogos", "Publicación Cancelada.");
-                        cancelar();
-                    }
-                });
-                dialogo.show();
-            }
-
-            public void aceptar() {
-                ((TextView)findViewById(R.id.editText4)).setText("Publicar comentario");
-                //dialogo.finish();
-            }
-
-            public void cancelar() {
-                ((TextView)findViewById(R.id.editText4)).setText("Cancelar publicación");
-                //finish();
-            }
-
-
-
-
-                /*VariablesGlobales globales = new VariablesGlobales();//EJEMPLO DE USO DE VARIABLES GLOBALES
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                cuadroDialogoConfirmarAddComentario dialogo = new cuadroDialogoConfirmarAddComentario();
-                dialogo.show(fragmentManager, "tagAlerta");
-
-                if(globales.getRespuestaDialogo().equals("publicar")){
-                    ((TextView)findViewById(R.id.editText4)).setText("Publicar comentario");
-                }
-                if(globales.getRespuestaDialogo().equals("cancelar")){
-                    ((TextView)findViewById(R.id.editText4)).setText("Cancelar publicación");
-                }
-            }
-    });
-*/
     }
 
     //PARA MENÚ CONTEXTUAL*******************************

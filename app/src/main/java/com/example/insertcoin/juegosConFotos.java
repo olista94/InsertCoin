@@ -13,9 +13,8 @@ public class juegosConFotos {
     String compañia;
     int año;
     String edadRecomendada;
-    String enlace;
 
-    public juegosConFotos(long id, String titulo, Drawable portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
+    public juegosConFotos(long id, String titulo, Drawable portada, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada) {
         this.id = id;
         this.titulo = titulo;
         this.portada = portada;
@@ -26,10 +25,9 @@ public class juegosConFotos {
         this.compañia = compañia;
         this.año = año;
         this.edadRecomendada = edadRecomendada;
-        this.enlace = enlace;
     }
 
-    public juegosConFotos(long id, String titulo, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada, String enlace) {
+    public juegosConFotos(long id, String titulo, String descripcion, String genero, String plataforma, String nacionalidad, String compañia, int año, String edadRecomendada) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -39,7 +37,6 @@ public class juegosConFotos {
         this.compañia = compañia;
         this.año = año;
         this.edadRecomendada = edadRecomendada;
-        this.enlace = enlace;
     }
 
     public juegosConFotos(String titulo) {
@@ -121,13 +118,5 @@ public class juegosConFotos {
 
     public void setEdadRecomendada(String edadRecomendada) {
         this.edadRecomendada = edadRecomendada;
-    }
-
-    public String getEnlace() {
-        return enlace;
-    }
-
-    public void setEnlace(String enlace) {
-        this.enlace = enlace;
     }
 }

@@ -4,7 +4,6 @@
     <string name="contraseña">Contraseña</string>
     <string name="ver_comentarios">Ver comentarios</string>
     <string name="a_adir_comentario">Añadir comentarios</string>
-    <string name="ver_perfil">Ver Perfil</string>
+    <string name="ver_perfil">Ver perfil</string>
     <string name="cerrar_sesion">Cerrar sesion</string>
-    <string name="title_activity_juegos__showall2">Juegos_SHOWALL2</string>
 </resources>

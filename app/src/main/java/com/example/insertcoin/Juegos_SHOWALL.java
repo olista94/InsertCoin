@@ -1,5 +1,7 @@
 package com.example.insertcoin;
 
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Lifecycle;
@@ -26,9 +30,13 @@ import java.util.ArrayList;
 
 public class Juegos_SHOWALL extends AppCompatActivity {
 
+    //Button logout = (Button)findViewById(R.id.logout);
+
+
     ArrayList<juegos> datos = new ArrayList<>();
     GestorBD bd;
     SQLiteDatabase baseDatos;
+    ListView lista;
 
     @Override
     protected void onPause() {
@@ -69,27 +77,30 @@ public class Juegos_SHOWALL extends AppCompatActivity {
         int id = item.getItemId();
         int pos;
 
-            if(id == R.id.addComentario) {
-                pos = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
-                VariablesGlobales.setTituloActual(datos.get(pos).getTitulo());
-                Intent i = new Intent(this, activity_add_comentario.class);
-                startActivity(i);
-            }
+        if(id == R.id.addComentario) {
+            pos = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+            VariablesGlobales.setTituloActual(datos.get(pos).getTitulo());
+            Intent i = new Intent(this, activity_add_comentario.class);
+            startActivity(i);
+        }
 
-            else if(id == R.id.verComentarios) {
-                pos = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
-                VariablesGlobales.setTituloActual(datos.get(pos).getTitulo());
-                Intent i = new Intent(this, Comentarios_SHOWALL.class);
-                startActivity(i);
-            }
-            else if(id == R.id.addFoto) {
-
-            }
-            else{
-                Intent i = new Intent(this, Comentarios_SHOWALL.class);
-                startActivity(i);
-            }
-            return true;
+        else if(id == R.id.verComentarios) {
+            pos = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+            VariablesGlobales.setTituloActual(datos.get(pos).getTitulo());
+            Intent i = new Intent(this, Comentarios_SHOWALL.class);
+            startActivity(i);
+        }
+        else if(id == R.id.editJuego) {
+            pos = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+            VariablesGlobales.setTituloActual(datos.get(pos).getTitulo());
+            Intent i = new Intent(this, Juegos_EDIT.class);
+            startActivity(i);
+        }
+        else{
+            Intent i = new Intent(this, Comentarios_SHOWALL.class);
+            startActivity(i);
+        }
+        return true;
     }
 
 
@@ -97,22 +108,46 @@ public class Juegos_SHOWALL extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-                if(id == R.id.verPerfil) {
-                    Intent i = new Intent(this, Usuarios_SHOWCURRENT.class);
-                    startActivity(i);
-                }
-                else if(id == R.id.logout) {
-                    this.finish();
-                    Intent intent = new Intent(this,LoginActivity.class);
-                    startActivity(intent);
-                }
-            else {
-                    Intent i = new Intent(this, Comentarios_SHOWALL.class);
-                    startActivity(i);
-                }
-            return true;
+        if(id == R.id.verPerfil) {
+            Intent i = new Intent(this, Usuarios_SHOWCURRENT.class);
+            startActivity(i);
+        }
+        else if(id == R.id.logout) {
+            this.finish();
+            VariablesGlobales.setTituloActual("");
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.buscarJuego){
+            Intent intent = new Intent(this, ActivityBuscarJuego.class);
+            startActivity(intent);
+        }
+        else {
+            Intent i = new Intent(this, Comentarios_SHOWALL.class);
+            startActivity(i);
+        }
+        return true;
+
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        bd = VariablesGlobales.getBaseDatos();
+        String usuario = VariablesGlobales.getUsuario();
+        //bd = new GestorBD(getApplicationContext(),"",null,1);
+        baseDatos = bd.getWritableDatabase();
+        datos = bd.buscarJuegos(baseDatos,VariablesGlobales.getTituloActual());
+        ArrayList<juegosConFotos> datosConFoto = new ArrayList<>();
+        loadDatosConFoto(datosConFoto);
+
+        //ADAPTER
+        Adaptador adaptador = new Adaptador(this, datosConFoto);
+
+        lista.setAdapter(adaptador);
+        adaptador.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +155,7 @@ public class Juegos_SHOWALL extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juegos_showall );
 
-        // Falta algo,lo que?
-        ListView lista = (ListView) findViewById(R.id.lista);
+         lista = (ListView) findViewById(R.id.lista);
         this.registerForContextMenu(lista);
         Intent intent = getIntent();
 
@@ -130,17 +164,9 @@ public class Juegos_SHOWALL extends AppCompatActivity {
         //bd = new GestorBD(getApplicationContext(),"",null,1);
         baseDatos = bd.getWritableDatabase();
 
-        datos = bd.obtenerDatosJuegos(baseDatos);
+        datos = bd.buscarJuegos(baseDatos,VariablesGlobales.getTituloActual());
         ArrayList<juegosConFotos> datosConFoto = new ArrayList<>();
-        for(juegos e : datos) {
-            String ruta = "@drawable/"+e.getPortada();
-
-            int imageResource = getResources().getIdentifier(ruta, null, getPackageName());
-            Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-            //juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada(), e.getEnlace());
-            juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), imagen, e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada(), e.getEnlace());
-            datosConFoto.add(f);
-        }
+        loadDatosConFoto(datosConFoto);
 
         //ADAPTER
         Adaptador adaptador = new Adaptador(this, datosConFoto);
@@ -173,13 +199,38 @@ public class Juegos_SHOWALL extends AppCompatActivity {
 
         FloatingActionButton btn_addJuego = findViewById(R.id.btn_addJuego);
 
-       btn_addJuego.setOnClickListener(new View.OnClickListener() {
+        btn_addJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Juegos_ADD.class);
-                startActivity(i);
+                startActivityForResult(i,1);
             }
         });
+    }
+
+    private void loadDatosConFoto(ArrayList<juegosConFotos> datosConFoto) {
+        String ruta;
+        for(juegos e : datos) {
+            Drawable imagen = null;
+            if(e.getPortada().contains("/")){
+                ruta = e.getPortada();
+
+                imagen = Drawable.createFromPath(ruta);
+            }
+            else{
+                ruta = "@drawable/"+e.getPortada();
+
+                int imageResource = getResources().getIdentifier(ruta, null, getPackageName());
+
+                imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
+
+            }
+            //System.out.println("rutinhassssssssssssssssssssssssssssssssssssssss"+ruta);
+
+            //juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada());
+            juegosConFotos f = new juegosConFotos(e.getId(), e.getTitulo(), imagen, e.getDescripcion(), e.getGenero(), e.getPlataforma(), e.getNacionalidad(), e.getCompañia(), e.getAño(), e.getEdadRecomendada());
+            datosConFoto.add(f);
+        }
     }
 
 }
